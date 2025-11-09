@@ -1,0 +1,62 @@
+\documentclass[12pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{cite}
+
+\title{Sample Research Paper with Citations}
+\author{John Doe}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+This is a sample research paper demonstrating citations, bibliographies, and figure inclusion. It showcases the enhanced features of the LaTeX MCP server including BibTeX support and image handling.
+\end{abstract}
+
+\section{Introduction}
+
+LaTeX is a powerful typesetting system widely used in academia \cite{lamport1994latex}. It excels at handling complex mathematical equations and bibliographic references \cite{knuth1984texbook}.
+
+\section{Mathematical Formulas}
+
+Einstein's mass-energy equivalence is expressed as:
+\begin{equation}
+E = mc^2
+\end{equation}
+
+The Pythagorean theorem states:
+\begin{equation}
+a^2 + b^2 = c^2
+\end{equation}
+
+\section{Related Work}
+
+Several researchers have explored document preparation systems \cite{lamport1994latex, knuth1984texbook}. Modern tools have built upon these foundational works.
+
+\section{Methodology}
+
+Our approach combines traditional LaTeX compilation with modern tooling \cite{lamport1994latex}.
+
+\section{Figures}
+
+Figure support is essential for academic papers. You can include images using:
+
+\begin{verbatim}
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.5\textwidth]{image.png}
+\caption{Sample figure}
+\end{figure}
+\end{verbatim}
+
+\section{Conclusion}
+
+This paper demonstrates the enhanced LaTeX MCP server capabilities including proper citation handling and asset management.
+
+\bibliography{references}
+\bibliographystyle{plain}
+
+\end{document}

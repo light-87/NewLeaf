@@ -82,33 +82,84 @@ Claude: [generates LaTeX with a² + b² = c² and compiles it]
 ✅ LaTeX compiled successfully!
 ```
 
-### Example 3: From File
+### Example 3: Project with Citations
 
 ```
-You: Compile the LaTeX file at /path/to/my/paper.tex
+You: Compile the LaTeX project in /path/to/my/paper/
+The directory has main.tex, references.bib, and figures/
 
-Claude: [uses compile_latex_file tool]
-✅ LaTeX file compiled successfully!
+Claude: [uses compile_latex_project tool]
+✅ LaTeX project compiled successfully!
+```
+
+### Example 4: ZIP File (Overleaf Template)
+
+```
+You: Compile this Overleaf template ZIP at /path/to/template.zip
+
+Claude: [uses compile_latex_zip tool]
+✅ LaTeX ZIP compiled successfully!
+```
+
+### Example 5: Paper with Images and Citations
+
+```
+You: Create a LaTeX paper with:
+- Title "My Research"
+- Abstract
+- Introduction with citations to \cite{einstein1905}
+- A figure from figures/plot.png
+- Bibliography from refs.bib
+
+Claude: [generates LaTeX and compiles with all assets]
+✅ All citations and figures rendered perfectly!
 ```
 
 ## Available Tools
 
 ### `compile_latex`
 
-Compiles LaTeX code directly.
+Compiles LaTeX code directly with full citation support.
 
 **Parameters:**
 - `latex_content` (required): The LaTeX source code
 - `filename` (optional): Output filename without .pdf
 - `auto_open` (optional): Auto-open PDF (default: true)
 
-### `compile_latex_file`
+**Features:**
+- Auto-detects BibTeX vs BibLaTeX
+- Runs multiple passes for citations
+- Handles inline bibliographies
 
-Compiles a .tex file from disk.
+### `compile_latex_project`
+
+Compiles a LaTeX project directory with all assets (images, .bib files, style files).
 
 **Parameters:**
-- `file_path` (required): Path to the .tex file
+- `project_path` (required): Path to directory containing LaTeX project
+- `main_file` (optional): Name of main .tex file (auto-detected if not provided)
 - `auto_open` (optional): Auto-open PDF (default: true)
+
+**Features:**
+- Auto-finds main .tex file (main.tex, paper.tex, etc.)
+- Copies all assets (images, .bib, .cls, .sty files)
+- Maintains directory structure
+- Handles figures in subdirectories
+
+### `compile_latex_zip`
+
+Extract and compile a LaTeX project from a ZIP file (perfect for Overleaf templates!).
+
+**Parameters:**
+- `zip_path` (required): Path to the ZIP file
+- `main_file` (optional): Name of main .tex file (auto-detected if not provided)
+- `auto_open` (optional): Auto-open PDF (default: true)
+
+**Features:**
+- Extracts ZIP automatically
+- Handles nested directories
+- Perfect for Overleaf exports
+- Works with arXiv source files
 
 ## Output
 
@@ -129,13 +180,17 @@ COMPILER = "xelatex"
 
 ## Features
 
-✅ Local compilation (runs on your machine)
-✅ Auto-opens PDFs
-✅ Supports bibliographies (auto-runs bibtex)
-✅ Detailed error logs
-✅ Works with any MCP client
-✅ Simple setup
-✅ Free and open source
+✅ **Local compilation** - Runs on your machine, no cloud needed
+✅ **Auto-opens PDFs** - Opens in default viewer automatically
+✅ **Perfect citations** - BibTeX and BibLaTeX support with multiple compilation passes
+✅ **ZIP file support** - Extract and compile Overleaf templates, arXiv papers
+✅ **Images & assets** - Handles figures, graphics (.png, .jpg, .pdf, .eps, .svg)
+✅ **Multi-file projects** - Supports complex projects with includes
+✅ **Smart main file detection** - Auto-finds main.tex or paper.tex
+✅ **Detailed error logs** - Comprehensive compilation logs
+✅ **Works with any MCP client** - Claude Desktop, or any MCP-compatible AI
+✅ **Simple setup** - Just install and go
+✅ **Free and open source** - MIT license
 
 ## Troubleshooting
 

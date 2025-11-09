@@ -1,6 +1,7 @@
 # Output files
 output/*.pdf
 logs/*.log
+temp/
 
 # Python
 __pycache__/
