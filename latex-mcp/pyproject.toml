@@ -1,0 +1,26 @@
+[project]
+name = "latex-mcp"
+version = "0.1.0"
+description = "Simple local MCP server for LaTeX compilation"
+authors = [{name = "Your Name"}]
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=0.9.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest",
+    "black",
+    "ruff",
+]
+
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.black]
+line-length = 100
+
+[tool.ruff]
+line-length = 100
